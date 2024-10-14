@@ -1,14 +1,15 @@
 from pathlib import Path
-from sklearn.metrics import jaccard_score
+
 import torch
 import torch.nn as nn
 import torch.optim as optim
+from sklearn.metrics import jaccard_score
 from tqdm import tqdm
-
 
 from baseline.collate import pad_collate
 from baseline.dataset import BaselineDataset
 from baseline.model import SimpleSegmentationModel
+from config import DATA_PATH, DEVICE
 
 
 def print_iou_per_class(
@@ -95,7 +96,7 @@ def train_model(
         for i, (inputs, targets) in tqdm(enumerate(dataloader), total=len(dataloader)):
             # Move data to device
             inputs["S2"] = inputs["S2"].to(device)  # Satellite data
-            targets = targets.to(device)
+            targets = targets.to(device).long()
 
             # Zero the parameter gradients
             optimizer.zero_grad()
@@ -134,14 +135,13 @@ def train_model(
 if __name__ == "__main__":
     # Example usage:
     model = train_model(
-        data_folder=Path(
-            "/Users/louis.stefanuto.c/Documents/pastis-benchmark-mines2024/DATA/TRAIN/"
-        ),
+        data_folder=Path(DATA_PATH),
         nb_classes=20,
         input_channels=10,
         num_epochs=100,
         batch_size=32,
         learning_rate=1e-3,
-        device="mps",
+        device=DEVICE,
         verbose=True,
     )
+    torch.save(model, "checkpoints/model.pth")
