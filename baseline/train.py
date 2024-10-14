@@ -95,14 +95,15 @@ def train_model(
         for i, (inputs, targets) in tqdm(enumerate(dataloader), total=len(dataloader)):
             # Move data to device
             inputs["S2"] = inputs["S2"].to(device)  # Satellite data
+            targets = targets.long()
             targets = targets.to(device)
+            
 
             # Zero the parameter gradients
             optimizer.zero_grad()
 
             # Forward pass
             outputs = model(inputs["S2"][:, 10, :, :, :])  # only use the 10th image
-
             # Loss computation
             loss = criterion(outputs, targets)
 
@@ -135,13 +136,14 @@ if __name__ == "__main__":
     # Example usage:
     model = train_model(
         data_folder=Path(
-            "/Users/louis.stefanuto.c/Documents/pastis-benchmark-mines2024/DATA/TRAIN/"
+            "/Users/alexi/Documents/mines/S5/idsc/capgemini challenge/DATA-mini/DATA-mini"
         ),
         nb_classes=20,
         input_channels=10,
         num_epochs=100,
         batch_size=32,
         learning_rate=1e-3,
-        device="mps",
+        # device="mps",
+        device="cuda" if torch.cuda.is_available() else "cpu",
         verbose=True,
     )
