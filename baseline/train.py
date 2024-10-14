@@ -9,7 +9,7 @@ from tqdm import tqdm
 from baseline.collate import pad_collate
 from baseline.dataset import BaselineDataset
 from baseline.model import SimpleSegmentationModel
-from config import DATA_PATH, DEVICE
+from config import DATA_PATH_TRAIN, DEVICE
 
 
 def print_iou_per_class(
@@ -130,19 +130,19 @@ def train_model(
         print(f"Epoch [{epoch + 1}/{num_epochs}], Loss: {epoch_loss:.4f}")
 
     print("Training complete.")
+    torch.save(model, f"checkpoints/model_epoch{num_epochs}.pth")
     return model
 
 
 if __name__ == "__main__":
     # Example usage:
     model = train_model(
-        data_folder=Path(DATA_PATH),
+        data_folder=Path(DATA_PATH_TRAIN),
         nb_classes=20,
         input_channels=10,
-        num_epochs=100,
+        num_epochs=1,
         batch_size=32,
         learning_rate=1e-3,
         device=DEVICE,
         verbose=True,
     )
-    torch.save(model, "checkpoints/model.pth")
