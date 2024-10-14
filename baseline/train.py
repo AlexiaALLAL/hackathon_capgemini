@@ -96,14 +96,15 @@ def train_model(
         for i, (inputs, targets) in tqdm(enumerate(dataloader), total=len(dataloader)):
             # Move data to device
             inputs["S2"] = inputs["S2"].to(device)  # Satellite data
-            targets = targets.to(device).long()
+            targets = targets.long()
+            targets = targets.to(device)
+            
 
             # Zero the parameter gradients
             optimizer.zero_grad()
 
             # Forward pass
             outputs = model(inputs["S2"][:, 10, :, :, :])  # only use the 10th image
-
             # Loss computation
             loss = criterion(outputs, targets)
 
