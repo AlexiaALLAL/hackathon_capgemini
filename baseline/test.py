@@ -7,6 +7,7 @@ from tqdm import tqdm
 from baseline.collate import pad_collate
 from baseline.dataset import BaselineDataset, BaselineDatasetTest
 from baseline.model import SimpleSegmentationModel
+from baseline.SegmentationViT import SegmentationViT
 from baseline.submission_tools import masks_to_str
 from baseline.train import print_iou_per_class, print_mean_iou
 from config import DATA_PATH_TEST
@@ -20,7 +21,7 @@ def test_model(
         batch_size: int = 1,
 ):
     # Load model
-    model = SimpleSegmentationModel(input_channels, nb_classes)
+    model = SegmentationViT()
     model = torch.load(f"checkpoints/{name}.pth")
     model.eval()
 
@@ -56,7 +57,7 @@ def test_model(
 
 if __name__ == "__main__":
     test_model(
-        name="model_epoch1",
+        name="vit_epoch5",
         input_channels=10,
         nb_classes=20,
         data_folder=Path(DATA_PATH_TEST),
