@@ -3,6 +3,7 @@ import torch.nn as nn
 # from torchvision.models.vision_transformer import VisionTransformer
 from baseline.vision_transformer import VisionTransformer
 
+
 class SegmentationViT(nn.Module):
     """
     More simple model : takes only the 10th image of the sequence and predicts the segmentation map.

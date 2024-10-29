@@ -57,7 +57,7 @@ def test_model(
 
 if __name__ == "__main__":
     test_model(
-        name="vit_epoch5",
+        name="vit_epoch30",
         input_channels=10,
         nb_classes=20,
         data_folder=Path(DATA_PATH_TEST),

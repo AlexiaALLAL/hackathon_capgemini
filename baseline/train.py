@@ -11,7 +11,7 @@ from baseline.dataset import BaselineDataset
 from baseline.model import SimpleSegmentationModel
 from torchvision.models.vision_transformer import VisionTransformer
 from baseline.SegmentationViT import SegmentationViT
-from baseline.model_vision_transformer import TemporalVisionTransformer
+from baseline.TemporalVisionTransformer import TemporalVisionTransformer
 from config import DATA_PATH_TRAIN, DEVICE
 
 
@@ -83,8 +83,8 @@ def train_model(
     )
 
     # Initialize the model, loss function, and optimizer
-    # model = SimpleSegmentationModel(input_channels, nb_classes)
-    model = SegmentationViT()
+    model = SimpleSegmentationModel(input_channels, nb_classes)
+    # model = SegmentationViT()
 
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.Adam(model.parameters(), lr=learning_rate)
@@ -136,7 +136,7 @@ def train_model(
         print(f"Epoch [{epoch + 1}/{num_epochs}], Loss: {epoch_loss:.4f}")
 
     print("Training complete.")
-    torch.save(model, f"checkpoints/vit_epoch{num_epochs}.pth")
+    torch.save(model, f"checkpoints/simple_model_epoch{num_epochs}.pth")
     return model
 
 
@@ -146,9 +146,9 @@ if __name__ == "__main__":
         data_folder=Path(DATA_PATH_TRAIN),
         nb_classes=20,
         input_channels=10,
-        num_epochs=5,
+        num_epochs=100,
         batch_size=32,
         learning_rate=1e-3,
         device=DEVICE,
-        verbose=True,
+        verbose=False,
     )

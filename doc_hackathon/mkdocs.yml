@@ -1,0 +1,16 @@
+site_name: Mines Paris x Capgemini Invent Data challenge 2024
+
+nav:
+  - Home: index.md
+  - YOLO implementation: YOLO.md
+  - Implementation of a ViT pretrained on a crop segmentation task: prithvi.md
+  - Implementation of a temporal ViT from scratch: TemporalVisionTransformer.md
+  - Implementation of a simple vision transformer whithout time dependency from scratch: SegmentationViT.md
+
+theme:
+  name: material
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences

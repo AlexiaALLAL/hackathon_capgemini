@@ -18,12 +18,13 @@ Here, we used a promising network already pretrained and adaptated to our task, 
 
 ### 3. Implementation of a temporal ViT from scratch
 
-You can find this implementation in `baseline\model_vision_transformer.py`.
+You can find this implementation in `baseline\TemporalVisionTransformer.py`.
 We tried to implement the time dependency starting from `torchvision`'s ViT model, but realized this wasn't going to be a successful approach given the amount of time we had.
 
 ### 4. Implementation of a simple vision transformer whithout time dependency from scratch
 
-You can find this implementation in `baseline\vision_transformer.py` and in the Drive folder.
+You can find this implementation in `baseline\SegmentationViT.py` and in the Drive folder.
 We tried to implement the simplest ViT we could using only one image by sequence. We had to modify the classification head of the network to fulfill the task of segmentation.
+This implementation uses the VisionTransformer from torchvision.models. In order to atapt it for our dataset, we had to change the number of channels in the ViT... (in_channels = 10) that was hardcoded in the original implementation. You can find the modified version in `baseline\vision_transformer.py`.
 
 This model was trained on our data and resulted in a 8% mIoU on the visible part of the test set. It is our best performing implementation, yet we were able to get 10% mIoU by running only `baseline/model.py` on a few epochs, which shows the limit of this ViT network.
