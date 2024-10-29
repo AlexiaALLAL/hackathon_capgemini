@@ -2,6 +2,8 @@
 
 Welcome to the **Team 6 Data Challenge Repo**! This repository shows our researchs during the week. For the trainings we mainly used google Colab and a drive (https://drive.google.com/drive/folders/1TftEbvydR-n1Ca8ADERiAlYj7tO3Jq42?usp=drive_link)
 
+The documentation is available in the `doc_hackathon/` folder. You can find the experiments we conducted during the week in `docs/site/index.html`.
+
 ## Experiments
 
 ### 1. YOLO implementation
