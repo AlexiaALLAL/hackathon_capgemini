@@ -1,7 +1,17 @@
 # Mines 2024 Data Challenge - Team 6 Documentation
 
 Welcome to the Team 6 Data Challenge Documentation! Our researchs during the week are available on <a href="https://github.com/AlexiaALLAL/hackathon_capgemini/"> GitHub </a>. For the trainings we mainly used google Colab and a <a href="https://drive.google.com/drive/folders/1TftEbvydR-n1Ca8ADERiAlYj7tO3Jq42?usp=drive_link">Google Drive</a>
-link to the drive : 
+
+
+## Team members
+- Alexia ALLAL
+- Jonas AMAR
+- Guillaume BUTHMANN
+- Fanny PICAMAL
+
+## Scientific report
+
+Our scientific report is available in [scientific report](task.md) section. It is a summary of our researchs and experiments during the week.
 
 
 ## Experiments
@@ -10,13 +20,14 @@ Here are the experiments we conducted during the week:
 
 ### 1. [YOLO implementation](YOLO.md)
 
+
 You can find it in the `yolo/` folder.
 We tried to run YOLO on our data but quickly stopped due to YOLO being trained with polygonal bounding boxes for segmentation. Since our data is only annotated with the masks of the classes on our images, it is not possible to directly feed these annotations to YOLO.
 
 While trying to implement this code, we chose to give up on the temporal dimension, selecting only one image per sequence and choosing only the RBG channels in order to feed the images to YOLO.
 
 
-### 2. [Implementation of a ViT pretrained on a crop segmentation task](prithvi_notebook.md)
+### 2. [Implementation of a ViT pretrained on a crop segmentation task](prithvi.md)
 
 You can find this implementation in `prithvi_notebook.ipynb`.
 Here, we used a promising network already pretrained and adaptated to our task, yet we weren't able to retrieve all the code, so we had to recode part of the network. It resulted in a working implementation that takes too long to train and gives poor results on the few epochs on which it was trained.
@@ -28,7 +39,7 @@ You can find this implementation in `baseline\TemporalVisionTransformer.py`.
 We tried to implement the time dependency starting from `torchvision`'s ViT model, but realized this wasn't going to be a successful approach given the amount of time we had.
 
 
-### 4. [Implementation of a simple vision transformer whithout time dependency from scratch](vision_transformer.md)
+### 4. [Implementation of a simple vision transformer whithout time dependency from scratch](SegmentationViT.md)
 
 You can find this implementation in `baseline\SegmentationViT.py` and in the Drive folder.
 We tried to implement the simplest ViT we could using only one image by sequence. We had to modify the classification head of the network to fulfill the task of segmentation.

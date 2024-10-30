@@ -10,7 +10,7 @@
       
       
       
-        <link rel="next" href="YOLO/">
+        <link rel="next" href="task/">
       
       
       <link rel="icon" href="assets/images/favicon.png">
@@ -235,6 +235,24 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#team-members" class="md-nav__link">
+    <span class="md-ellipsis">
+      Team members
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scientific-report" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scientific report
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#experiments" class="md-nav__link">
     <span class="md-ellipsis">
       Experiments
@@ -289,6 +307,26 @@
   
 </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="task/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scientific report
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -400,6 +438,24 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#team-members" class="md-nav__link">
+    <span class="md-ellipsis">
+      Team members
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scientific-report" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scientific report
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#experiments" class="md-nav__link">
     <span class="md-ellipsis">
       Experiments
@@ -466,21 +522,29 @@
 
 
 <h1 id="mines-2024-data-challenge-team-6-documentation">Mines 2024 Data Challenge - Team 6 Documentation</h1>
-<p>Welcome to the Team 6 Data Challenge Documentation! Our researchs during the week are available on GitHub<a href="https://github.com/AlexiaALLAL/hackathon_capgemini/"> GitHub </a>. For the trainings we mainly used google Colab and a <a href="https://drive.google.com/drive/folders/1TftEbvydR-n1Ca8ADERiAlYj7tO3Jq42?usp=drive_link">Google Drive</a>
-link to the drive : </p>
+<p>Welcome to the Team 6 Data Challenge Documentation! Our researchs during the week are available on <a href="https://github.com/AlexiaALLAL/hackathon_capgemini/"> GitHub </a>. For the trainings we mainly used google Colab and a <a href="https://drive.google.com/drive/folders/1TftEbvydR-n1Ca8ADERiAlYj7tO3Jq42?usp=drive_link">Google Drive</a></p>
+<h2 id="team-members">Team members</h2>
+<ul>
+<li>Alexia ALLAL</li>
+<li>Jonas AMAR</li>
+<li>Guillaume BUTHMANN</li>
+<li>Fanny PICAMAL</li>
+</ul>
+<h2 id="scientific-report">Scientific report</h2>
+<p>Our scientific report is available in <a href="task/">scientific report</a> section. It is a summary of our researchs and experiments during the week.</p>
 <h2 id="experiments">Experiments</h2>
 <p>Here are the experiments we conducted during the week:</p>
 <h3 id="1-yolo-implementation">1. <a href="YOLO/">YOLO implementation</a></h3>
 <p>You can find it in the <code>yolo/</code> folder.
 We tried to run YOLO on our data but quickly stopped due to YOLO being trained with polygonal bounding boxes for segmentation. Since our data is only annotated with the masks of the classes on our images, it is not possible to directly feed these annotations to YOLO.</p>
 <p>While trying to implement this code, we chose to give up on the temporal dimension, selecting only one image per sequence and choosing only the RBG channels in order to feed the images to YOLO.</p>
-<h3 id="2-implementation-of-a-vit-pretrained-on-a-crop-segmentation-task">2. <a href="prithvi_notebook.md">Implementation of a ViT pretrained on a crop segmentation task</a></h3>
+<h3 id="2-implementation-of-a-vit-pretrained-on-a-crop-segmentation-task">2. <a href="prithvi/">Implementation of a ViT pretrained on a crop segmentation task</a></h3>
 <p>You can find this implementation in <code>prithvi_notebook.ipynb</code>.
 Here, we used a promising network already pretrained and adaptated to our task, yet we weren't able to retrieve all the code, so we had to recode part of the network. It resulted in a working implementation that takes too long to train and gives poor results on the few epochs on which it was trained.</p>
 <h3 id="3-implementation-of-a-temporal-vit-from-scratch">3. <a href="TemporalVisionTransformer/">Implementation of a temporal ViT from scratch</a></h3>
 <p>You can find this implementation in <code>baseline\TemporalVisionTransformer.py</code>.
 We tried to implement the time dependency starting from <code>torchvision</code>'s ViT model, but realized this wasn't going to be a successful approach given the amount of time we had.</p>
-<h3 id="4-implementation-of-a-simple-vision-transformer-whithout-time-dependency-from-scratch">4. <a href="vision_transformer.md">Implementation of a simple vision transformer whithout time dependency from scratch</a></h3>
+<h3 id="4-implementation-of-a-simple-vision-transformer-whithout-time-dependency-from-scratch">4. <a href="SegmentationViT/">Implementation of a simple vision transformer whithout time dependency from scratch</a></h3>
 <p>You can find this implementation in <code>baseline\SegmentationViT.py</code> and in the Drive folder.
 We tried to implement the simplest ViT we could using only one image by sequence. We had to modify the classification head of the network to fulfill the task of segmentation.
 This implementation uses the VisionTransformer from torchvision.models. In order to atapt it for our dataset, we had to change the number of channels in the ViT... (in_channels = 10) that was hardcoded in the original implementation. You can find the modified version in <code>baseline\vision_transformer.py</code>.</p>

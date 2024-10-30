@@ -2,6 +2,7 @@ site_name: Mines Paris x Capgemini Invent Data challenge 2024
 
 nav:
   - Home: index.md
+  - Scientific report: task.md
   - YOLO implementation: YOLO.md
   - Implementation of a ViT pretrained on a crop segmentation task: prithvi.md
   - Implementation of a temporal ViT from scratch: TemporalVisionTransformer.md
